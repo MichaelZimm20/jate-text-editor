@@ -19,7 +19,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.hmtl',
+        template: './index.html',
         title: 'Webpack Plugin',
       }),
       new InjectManifest({

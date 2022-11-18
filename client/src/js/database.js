@@ -1,5 +1,5 @@
 import { openDB } from 'idb';
-import 'regenerator-runtime/runtime';
+
 
 const initdb = async () =>
   openDB('jate', 1, {
@@ -43,10 +43,10 @@ export const getDb = async () => {
   // console.error('getDb not implemented');
   console.log('GET from the database');
 
-   // create a connection to the IndexedDB and the version
-   const jatedb = await openDB('jate', 1);
+  // create a connection to the IndexedDB and the version
+  const jatedb = await openDB('jate', 1);
 
-   // create a new transaction, specify the store and data privileges 
+  // create a new transaction, specify the store and data privileges 
   const tx = jatedb.transaction('jate', 'readonly');
 
   // open up the desired object store 
@@ -59,11 +59,6 @@ export const getDb = async () => {
   const result = await request;
   console.log('result.value', result);
   return result;
-
-
-   
-
-  
 
 };
 
