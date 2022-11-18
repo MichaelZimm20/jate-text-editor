@@ -18,22 +18,25 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      // generate html and bundle.js
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Webpack Plugin',
       }),
+      // injects service worker 
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'service-worker.js'
+        swDest: 'src-sw.js'
       }),
+      // create manifest.json 
       new WebpackPwaManifest({
         name: 'Just-Another-Text-Editor',
         short_name: 'JATE',
         description: 'a text editor for coding',
         background_color: '#7eb4e2',
         theme_color: '#7eb4e2',
-        start_url: './',
-        publicPath: './',
+        start_url: '/',
+        publicPath: '/',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
