@@ -36,17 +36,25 @@ const mactchCallback = ({ request }) => {
     request.destination === 'style' ||
 
     // JavaScript 
-    request.destination === 'script'
+    request.destination === 'script' ||
+
+    // images 
+    request.destination === 'worker'
   );
 };
 
 registerRoute(
+  
   mactchCallback, 
   new StaleWhileRevalidate({
     cacheName,
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
       }),
     ],
   })
